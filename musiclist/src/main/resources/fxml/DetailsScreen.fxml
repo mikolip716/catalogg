@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="addRoot" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="900.0" prefWidth="800.0" style="-fx-background-color: #dddddd;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ml.musiclist.ui.DetailsScreenController">
+   <children>
+      <Label maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="40.0" style="-fx-background-color: #cccccc; -fx-background-radius: 5 5 5 5;" text="Album details:" textAlignment="CENTER" textFill="#666666" VBox.vgrow="ALWAYS">
+         <font>
+            <Font name="Open Sans Bold" size="24.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </Label>
+      <HBox maxHeight="250.0" maxWidth="1.7976931348623157E308" prefHeight="250.0" prefWidth="765.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+               <children>
+                  <ImageView fx:id="albumCover" fitHeight="280.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 0);">
+                     <image>
+                        <Image url="@../album_cover_placeholder.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <VBox maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="300.0">
+                     <children>
+                        <HBox style="-fx-background-color: #cccccc; -fx-background-radius: 5 5 5 5;">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label text="Owned: " textFill="#666666">
+                                 <font>
+                                    <Font name="Open Sans Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="ownedStateLabel" maxWidth="1.7976931348623157E308" text="..." textFill="#666666" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Open Sans Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox maxHeight="-Infinity" prefHeight="30.0" style="-fx-background-color: #cccccc; -fx-background-radius: 5 5 5 5;">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label text="Listened to:" textFill="#666666">
+                                 <font>
+                                    <Font name="Open Sans Bold" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="listenedToStateLabel" maxWidth="1.7976931348623157E308" text="..." textFill="#666666" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Open Sans Bold" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox style="-fx-background-color: #cccccc; -fx-background-radius: 5 5 5 5;">
+                           <children>
+                              <Label text="Listened date:" textFill="#666666">
+                                 <font>
+                                    <Font name="Open Sans Bold" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="listenedToDateLabel" maxWidth="1.7976931348623157E308" text="..." textFill="#666666" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Open Sans Bold" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <Label fx:id="albumLengthLabel" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="40.0" style="-fx-background-color: #cccccc; -fx-background-radius: 5 5 5 5;" text="Album length: " textAlignment="CENTER" textFill="#666666">
+                           <font>
+                              <Font name="Open Sans Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="566.0" prefWidth="512.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <TextField fx:id="titleInputField" editable="false" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="500.0" promptText="Title" style="-fx-background-color: #cccccc; -fx-text-fill: #666666;">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="artistField" editable="false" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="500.0" promptText="Artist(s)" style="-fx-background-color: #cccccc; -fx-text-fill: #666666;">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="35.0" prefWidth="502.0" style="-fx-background-color: #cccccc; -fx-background-radius: 5 5 5 5;" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="40.0" text="Type:" textAlignment="CENTER" textFill="#666666" HBox.hgrow="NEVER">
+                           <font>
+                              <Font name="Open Sans Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="typeLabel" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="40.0" text="..." textAlignment="CENTER" textFill="#666666" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="Open Sans Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="97.0" text="Release date:" textAlignment="CENTER" textFill="#666666" HBox.hgrow="NEVER">
+                           <font>
+                              <Font name="Open Sans Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="releaseDateLabel" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="40.0" text="..." textAlignment="CENTER" textFill="#666666" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="Open Sans Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <TextField fx:id="genresField" editable="false" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="500.0" promptText="Genre(s)" style="-fx-background-color: #cccccc; -fx-text-fill: #666666;">
+                     <font>
+                        <Font name="Open Sans Bold" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="tagsField" editable="false" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="500.0" promptText="Tag(s)" style="-fx-background-color: #cccccc; -fx-text-fill: #666666;">
+                     <font>
+                        <Font name="Open Sans Bold" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="languagesField" editable="false" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="500.0" promptText="Language(s)" style="-fx-background-color: #cccccc; -fx-text-fill: #666666;">
+                     <font>
+                        <Font name="Open Sans Bold" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <HBox style="-fx-background-color: #cccccc; -fx-background-radius: 5 5 5 5;">
+                     <children>
+                        <Label text="Country: " textFill="#666666">
+                           <font>
+                              <Font name="Open Sans Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="countryLabel" maxWidth="1.7976931348623157E308" text="..." textFill="#666666" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="Open Sans Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox style="-fx-background-color: #cccccc; -fx-background-radius: 5 5 5 5;">
+                     <children>
+                        <Label maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="60.0" text="Format: " textAlignment="CENTER" textFill="#666666">
+                           <font>
+                              <Font name="Open Sans Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="formatLabel" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="60.0" text="..." textAlignment="CENTER" textFill="#666666" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="Open Sans Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox style="-fx-background-color: #cccccc; -fx-background-radius: 5 5 5 5;">
+                     <children>
+                        <Label maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="102.0" text="Addition date:" textAlignment="CENTER" textFill="#666666">
+                           <font>
+                              <Font name="Open Sans Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="addDateLabel" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="60.0" text="..." textAlignment="CENTER" textFill="#666666" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="Open Sans Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #cccccc; -fx-background-radius: 5 5 5 5;" VBox.vgrow="ALWAYS">
+         <children>
+            <Label maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="40.0" text="Media links" textAlignment="CENTER" textFill="#666666">
+               <font>
+                  <Font name="Open Sans Bold" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </Label>
+            <TableView fx:id="mediaTable" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <columns>
+                  <TableColumn fx:id="nameCol" editable="false" prefWidth="232.79999095201492" text="Site name" />
+                  <TableColumn fx:id="linkCol" editable="false" prefWidth="600.0" text="Link" />
+               </columns>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </TableView>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="300.0" prefWidth="400.0" style="-fx-background-color: #cccccc; -fx-background-radius: 5 5 5 5;" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="40.0" text="Track listing" textAlignment="CENTER" textFill="#666666" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Open Sans Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TableView fx:id="trackListingTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="numberCol" editable="false" prefWidth="26.3999941945076" text="No." />
+                        <TableColumn fx:id="titleCol" editable="false" prefWidth="247.2000732421875" text="Title" />
+                        <TableColumn fx:id="lengthCol" editable="false" prefWidth="104.79994506835936" text="Length" />
+                     </columns>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </TableView>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #cccccc; -fx-background-radius: 5 5 5 5;" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="40.0" text="Notes" textAlignment="CENTER" textFill="#666666" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Open Sans Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextArea fx:id="noteInputField" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #cccccc;" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </TextArea>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" right="5.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+         </children>
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>
