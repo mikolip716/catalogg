@@ -13,8 +13,16 @@ import javafx.scene.layout.Pane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
+
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -123,8 +131,19 @@ public class MainScreenController implements Initializable {
         resetButtonStatesExceptSelected(helpButton);
         helpButton.setStyle(PRESSED_BUTTON_STYLE);
         this.buttonPressed = "helpButton";
-        tableView.getTop().setVisible(false);
-        tableView.getTop().setManaged(false);
+        try {
+            InputStream manualAsStream = getClass().getClassLoader().getResourceAsStream("manual/manual.pdf");
+            Path tempOutput = Files.createTempFile("TempManual", ".pdf");
+            tempOutput.toFile().deleteOnExit();
+            Files.copy(manualAsStream, tempOutput, StandardCopyOption.REPLACE_EXISTING);
+            File userManual = new File (tempOutput.toFile().getPath());
+            if (userManual.exists())
+            {
+                Desktop.getDesktop().open(userManual);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void handleManageButton(ActionEvent event) {
         resetButtonStatesExceptSelected(manageButton);

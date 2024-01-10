@@ -53,7 +53,7 @@ public class ApiService {
     private final String songNumberXPath = "/metadata/release/medium-list/medium/track-list/track/number";
     private final String songTitleXPath = "/metadata/release/medium-list/medium/track-list/track/recording/title";
     private final String songLengthXPath = "/metadata/release/medium-list/medium/track-list/track/length";
-    private final String userAgent = "CatalOgg/1.0-RELEASE (mikolip716@student.polsl.pl)";
+    private final String userAgent = "CatalOgg/1.01-RELEASE (mikolip716@student.polsl.pl)";
     public String getCover (String mbid) throws IOException {
         String baseCoverUrlStart = "https://coverartarchive.org/release/";
         String baseCoverUrlEnd = "/front-250";

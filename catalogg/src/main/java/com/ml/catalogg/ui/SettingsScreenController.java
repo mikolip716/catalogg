@@ -57,6 +57,7 @@ public class SettingsScreenController implements Initializable {
         checkboxFullscreen.setSelected(propertiesManager.isStartFullscreen());
         openCoversFolderButton.setOnAction(this::handleOpenCoversFolderButton);
         openDataFolderButton.setOnAction(this::handleOpenDataFolderButton);
+        versionLabel.setText("1.01");
     }
     public void handleSaveButton(ActionEvent event) {
         propertiesManager.setSortMode(sortPicker.getValue());

@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.ml</groupId>
 	<artifactId>catalogg</artifactId>
-	<version>1.0-RELEASE</version>
+	<version>1.01-RELEASE</version>
 	<name>CatalOgg</name>
 	<description>App for cataloging music</description>
 	<properties>
@@ -51,6 +51,7 @@
 					<include>**/*.fxml</include>
 					<include>**/*.css</include>
 					<include>**/*.png</include>
+					<include>**/*.pdf</include>
 					<include>application.properties</include>
 				</includes>
 			</resource>
