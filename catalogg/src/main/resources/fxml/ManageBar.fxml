@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: #dddddd;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ml.catalogg.ui.ManageBarController">
+   <children>
+      <VBox maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #cccccc; -fx-background-radius: 5 0 0 5;" HBox.hgrow="ALWAYS">
+         <children>
+            <Label maxWidth="1.7976931348623157E308" prefHeight="25.6" style="-fx-background-radius: 5 5 5 5;" text="Manage data:" textFill="#333333" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="Open Sans Bold" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Button fx:id="showDetailsButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Show details of selected album" textFill="#666666" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Open Sans Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="setAsListenedButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Mark album as listened to" textFill="#666666">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Open Sans Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+         <HBox.margin>
+            <Insets left="5.0" top="5.0" />
+         </HBox.margin></VBox>
+      <VBox maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #cccccc; -fx-background-radius: 0 5 5 0;" HBox.hgrow="ALWAYS">
+         <children>
+            <Button fx:id="editRowButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Edit selected album" textFill="#666666" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Open Sans Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="deletRowButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Delete selected album" textFill="#666666" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Open Sans Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="setAsNotListenedButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Mark album as NOT listened to" textFill="#666666" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Open Sans Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+         <HBox.margin>
+            <Insets right="5.0" top="5.0" />
+         </HBox.margin></VBox>
+      <VBox maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #cccccc; -fx-background-radius: 5 5 5 5;" HBox.hgrow="ALWAYS">
+         <children>
+            <Label prefHeight="25.6" text="Change displayed table:" textFill="#333333">
+               <font>
+                  <Font name="Open Sans Bold" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Button fx:id="showToListenButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Show TO LISTEN table" textFill="#666666" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Open Sans Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="showHistoryButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Show HISTORY table" textFill="#666666" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Open Sans Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+         <HBox.margin>
+            <Insets top="5.0" />
+         </HBox.margin></VBox>
+   </children>
+</HBox>
