@@ -552,7 +552,7 @@ public class AddScreenController implements Initializable {
                     Task<Album> task = new Task<Album>() {
                         @Override
                         protected Album call() throws Exception {
-                            return getAlbumByTitleAndArtist(apiArtistField.getText().trim(), apiTitleField.getText().trim());
+                            return getAlbumByTitleAndArtist(apiTitleField.getText().trim(), apiArtistField.getText().trim());
                         }
                     };
                     setupTask(task);
@@ -592,6 +592,7 @@ public class AddScreenController implements Initializable {
             statusLabel.setTextFill(Color.GREEN);
         });
         task.setOnFailed((e) -> {
+            System.out.println(e.getSource().getException().getMessage());
             statusLabel.setText("An error occurred getting data");
             statusLabel.setTextFill(Color.RED);
         });

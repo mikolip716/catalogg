@@ -262,7 +262,7 @@ public class EditScreenController implements Initializable {
         }
         if (album.getCoverPath() != null) {
             File coverFile = new File (album.getCoverPath());
-            if (album.getCoverPath().contains("file:\\")) {
+            if (album.getCoverPath().contains("file:/")) {
                 albumCover.setImage(new Image(coverFile.toString()));
                 coverPath = coverFile.toString();
             }

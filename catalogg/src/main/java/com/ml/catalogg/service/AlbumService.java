@@ -323,7 +323,7 @@ public class AlbumService {
             resultSet.addAll(albumRepository.getCountByArtistIfAdditionDateAfter(date));
         }
         resultSet.sort(ArtistCount::CompareTo);
-        return  resultSet;
+        return resultSet;
     }
     @Transactional
     public List<GenreCount> getCountByGenreAfter(LocalDate date, String mode) {
@@ -338,7 +338,7 @@ public class AlbumService {
             resultSet.addAll(albumRepository.getCountByGenreIfAdditionDateAfter(date));
         }
         resultSet.sort(GenreCount::CompareTo);
-        return  resultSet;
+        return resultSet;
     }
     @Transactional
     public List<TagCount> getCountByTagAfter(LocalDate date, String mode) {
@@ -353,7 +353,7 @@ public class AlbumService {
             resultSet.addAll(albumRepository.getCountByTagIfAdditionDateAfter(date));
         }
         resultSet.sort(TagCount::CompareTo);
-        return  resultSet;
+        return resultSet;
     }
     @Transactional
     public Album getShortest(LocalDate date, String listenedMode) {

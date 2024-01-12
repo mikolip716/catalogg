@@ -225,6 +225,7 @@ public class StatsScreenController implements Initializable {
         for (ArtistCount c : top10) {
             series.getData().add(new XYChart.Data<String, Integer>(c.getName(), Math.toIntExact(c.getCount())));
         }
+        artistsBarChart.getData().clear();
         artistsBarChart.getData().add(series);
         if (!top10.isEmpty()) {
             artistAmountAxis.setAutoRanging(false);
@@ -264,6 +265,7 @@ public class StatsScreenController implements Initializable {
         for (GenreCount c : top10) {
             series.getData().add(new XYChart.Data<String, Integer>(c.getName(), Math.toIntExact(c.getCount())));
         }
+        genresBarChart.getData().clear();
         genresBarChart.getData().add(series);
         if (!top10.isEmpty()) {
             genreAmountAxis.setAutoRanging(false);
@@ -303,6 +305,7 @@ public class StatsScreenController implements Initializable {
         for (TagCount c : top10) {
             series.getData().add(new XYChart.Data<String, Integer>(c.getName(), Math.toIntExact(c.getCount())));
         }
+        tagsBarChart.getData().clear();
         tagsBarChart.getData().add(series);
         if (!top10.isEmpty()) {
             tagAmountAxis.setAutoRanging(false);

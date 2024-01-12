@@ -5,6 +5,9 @@ import com.ml.catalogg.enums.TypeEnum;
 public class TypeEnumParser {
     public static TypeEnum parse(String type) {
         TypeEnum typeEnum = TypeEnum.OTHER;
+        if (type == null) {
+            return typeEnum;
+        }
         type = type.trim();
         type = type.toLowerCase();
         if (type.contains("album")) {

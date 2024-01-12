@@ -90,6 +90,7 @@ public class ApiService {
         NodeList releaseList = doc.getElementsByTagName("release");
         if (releaseList != null) {
             Node release = releaseList.item(0);
+            System.out.println(releaseList.getLength());
             return release.getAttributes().getNamedItem("id").getNodeValue();
         } else {
             return null;
@@ -130,47 +131,15 @@ public class ApiService {
         if (formatNode != null) {
             apiAlbum.setFormat(FormatEnumParser.parse(formatNode.getTextContent()).toString());
         }
-        if (secondaryTypeNodeList.getLength() > 0) {
-            Node secondaryTypeNode = secondaryTypeNodeList.item(secondaryTypeNodeList.getLength() - 1);
-            apiAlbum.setType(TypeEnumParser.parse(secondaryTypeNode.getTextContent()).toString());
-        } else {
-            apiAlbum.setType(TypeEnumParser.parse(typeNode.getTextContent()).toString());
+        if (typeNode != null) {
+            apiAlbum.setType(getTypeFromNode(secondaryTypeNodeList, typeNode));
         }
-
-        if (relDateNode.getTextContent().length() > 7) {    //full date
-            apiAlbum.setReleaseDate(LocalDate.parse(relDateNode.getTextContent()));
-        } else if (relDateNode.getTextContent().length() == 7) {  //if the date provided is year and month only, set as 1st of the month
-            int year = Integer.parseInt(relDateNode.getTextContent().substring(0, 4));
-            int month = Integer.parseInt(relDateNode.getTextContent().substring(5, 7));
-            LocalDate releaseDate = LocalDate.of(year, month, 1);
-            apiAlbum.setReleaseDate(releaseDate);
-        } else if (relDateNode.getTextContent().length() == 4) {  //if the date provided is year only, set as January 1st of that year
-            LocalDate releaseDate = LocalDate.of(Integer.parseInt(relDateNode.getTextContent()), 1, 1);
-            apiAlbum.setReleaseDate(releaseDate);
+        if (relDateNode != null) {
+            apiAlbum.setReleaseDate(getRelDateFromNode(relDateNode));
         }
-
-        List<Artist> newArtistList = new ArrayList<>();
-        if (artistsNodeList.getLength() > 0) {
-            for (int i = 0; i < artistsNodeList.getLength(); i++) {
-                Node currentNode = artistsNodeList.item(i);
-                Artist tempArtist = new Artist();
-                tempArtist.setName(currentNode.getTextContent());
-                newArtistList.add(tempArtist);
-            }
-        }
-        apiAlbum.setArtists(newArtistList);
-
-        List<Genre> newGenreList = new ArrayList<>();
-        if (genreNodeList.getLength() > 0) {
-            for (int i = 0; i < genreNodeList.getLength(); i++) {
-                Node currentNode = genreNodeList.item(i);
-                Genre tempGenre = new Genre();
-                tempGenre.setName(currentNode.getTextContent());
-                newGenreList.add(tempGenre);
-            }
-        }
-        apiAlbum.setGenres(newGenreList);
-
+        apiAlbum.setArtists(getArtistsFromNode(artistsNodeList));
+        apiAlbum.setGenres(getGenresFromNode(genreNodeList));
+        //apiAlbum.setSongs(getSongsFromNode(songNumberNodeList, songTitleNodeList, songLengthNodeList));
         List<Songs> newSongsList = new ArrayList<>();
         if (songNumberNodeList.getLength() > 0) {
             for (int i = 0; i < songNumberNodeList.getLength(); i++) {
@@ -199,5 +168,76 @@ public class ApiService {
         apiAlbum.setSongs(newSongsList);
         return apiAlbum;
     }
-
+    private String getTypeFromNode(NodeList secondaryTypeNodeList, Node typeNode) {
+        if (secondaryTypeNodeList.getLength() > 0) {
+            Node secondaryTypeNode = secondaryTypeNodeList.item(secondaryTypeNodeList.getLength() - 1);
+            return TypeEnumParser.parse(secondaryTypeNode.getTextContent()).toString();
+        } else {
+            return TypeEnumParser.parse(typeNode.getTextContent()).toString();
+        }
+    }
+    private LocalDate getRelDateFromNode(Node relDateNode) {
+        if (relDateNode.getTextContent().length() > 7) {    //full date
+            return LocalDate.parse(relDateNode.getTextContent());
+        } else if (relDateNode.getTextContent().length() == 7) {  //if the date provided is year and month only, set as 1st of the month
+            int year = Integer.parseInt(relDateNode.getTextContent().substring(0, 4));
+            int month = Integer.parseInt(relDateNode.getTextContent().substring(5, 7));
+            return LocalDate.of(year, month, 1);
+        } else if (relDateNode.getTextContent().length() == 4) {  //if the date provided is year only, set as January 1st of that year
+            return LocalDate.of(Integer.parseInt(relDateNode.getTextContent()), 1, 1);
+        }
+        return null;
+    }
+    private List<Artist> getArtistsFromNode(NodeList artistsNodeList) {
+        List<Artist> newArtistList = new ArrayList<>();
+        if (artistsNodeList.getLength() > 0) {
+            for (int i = 0; i < artistsNodeList.getLength(); i++) {
+                Node currentNode = artistsNodeList.item(i);
+                Artist tempArtist = new Artist();
+                tempArtist.setName(currentNode.getTextContent());
+                newArtistList.add(tempArtist);
+            }
+        }
+        return newArtistList;
+    }
+    private List<Genre> getGenresFromNode(NodeList genreNodeList) {
+        List<Genre> newGenreList = new ArrayList<>();
+        if (genreNodeList.getLength() > 0) {
+            for (int i = 0; i < genreNodeList.getLength(); i++) {
+                Node currentNode = genreNodeList.item(i);
+                Genre tempGenre = new Genre();
+                tempGenre.setName(currentNode.getTextContent());
+                newGenreList.add(tempGenre);
+            }
+        }
+        return newGenreList;
+    }
+    private List<Songs> getSongsFromNode(NodeList songNumberNodeList, NodeList songTitleNodeList, NodeList songLengthNodeList) {
+        List<Songs> newSongsList = new ArrayList<>();
+        if (songNumberNodeList.getLength() > 0) {
+            for (int i = 0; i < songNumberNodeList.getLength(); i++) {
+                Node currentSongTitle = songTitleNodeList.item(i);
+                Node currentSongNumber = songNumberNodeList.item(i);
+                Node currentSongLength = songLengthNodeList.item(i);
+                Songs tempSong = new Songs();
+                if (currentSongNumber != null) {
+                    tempSong.setNumber(currentSongNumber.getTextContent());
+                } else {
+                    tempSong.setNumber("?");
+                }
+                if (currentSongTitle != null) {
+                    tempSong.setTitle(currentSongTitle.getTextContent());
+                } else {
+                    tempSong.setTitle("No title provided");
+                }
+                if (currentSongLength != null) {
+                    tempSong.setLength(Integer.parseInt(currentSongLength.getTextContent())/1000);
+                } else {
+                    tempSong.setLength(0);
+                }
+                newSongsList.add(tempSong);
+            }
+        }
+        return newSongsList;
+    }
 }
